@@ -1,0 +1,150 @@
+@import '../abstracts/mixins';
+
+// Navigation styles
+
+aside {
+    height: 100%;
+    min-width: 20%;
+    background-color: var(--color-background);
+    border-radius: 20px;
+}
+
+#prepend-container {
+    display: none;
+}
+
+nav {
+    height: 100%;
+    padding: 39px 18px;
+    box-sizing: border-box;
+
+    ul {
+        @include displayFlex(column);
+        gap: 10px;
+        list-style-type: none;
+        height: 100%;
+    }
+
+    li {
+        border-radius: 10px;
+
+        // Navigation link styles
+
+        a {
+            @include displayFlex();
+            @include flexProperties(flex-start, center);
+            text-decoration: none;
+            color: var(--color-text);
+            padding: 15px 17px;
+            border-radius: 10px;
+            font-size: 0.5rem;
+
+            .nav-svg {
+                margin-right: 5px;
+                width: 20px;
+                height: 20px;
+                fill: #ED1C25;
+            }
+        }
+
+        // Active navigation link styles
+
+        .active {
+            background-color: #ED1C25;
+            color: #FFFFFF;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+
+            .nav-svg {
+                fill: #FFFFFF;
+            }
+        }
+    }
+
+    li:last-of-type {
+        margin-top: auto;
+    }
+
+    li:hover {
+        background-color: #ED1C25;
+        cursor: pointer;
+        transition: 0.3s;
+
+        a {
+            color: #FFFFFF;
+        }
+
+        svg path {
+            fill: #FFFFFF;
+            transition: 0.3s;
+        }
+    }
+}
+
+// Navigation responsive styles
+
+@media (max-width: 768px) {
+    nav {
+        border-radius: 0;
+        padding-top: 15px;
+        height: 92%;
+    }
+
+    // Hide navigation when in mobile view
+
+    aside {
+        position: fixed;
+        left: -100%;
+        top: 50px;
+        margin: 15px;
+        // min-width: calc(100% - 30px);
+        width: calc(100% - 30px);
+        height: calc(100% - 80px);
+        z-index: 100;
+        transition: 0.5s;
+    }
+
+    // Show navigation when hamburger menu button is clicked
+
+    aside.active {
+        left: 0%;
+    }
+
+    // Container for dark mode switch and user info when in mobile view
+
+    #prepend-container {
+        @include displayFlex();
+        @include flexProperties(space-between, center);
+
+        #user-info {
+            @include displayFlex();
+            @include flexProperties(flex-start, center);
+            gap: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.5rem;
+            color: var(--color-text);
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                background: none;
+            }
+        }
+
+        .dark-mode-switch-container {
+            display: flex;
+        }
+    }
+}
+
+// Responsive styles
+
+@media (max-width: 1366px) {
+    aside {
+        min-width: 30%;
+    }
+}

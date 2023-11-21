@@ -1,0 +1,96 @@
+// Modal styles
+
+.description-img {
+    width: 100%;
+    height: 40%;
+    background-color: #FFFFFF;
+    object-fit: contain;
+    border-radius: 20px 20px 0 0;
+}
+
+.item-description {
+    @include displayFlex(column);
+    padding: 20px;
+    gap: 20px;
+
+    .top {
+        @include displayFlex();
+        @include flexProperties(space-between);
+    }
+
+    .title-category {
+        @include displayFlex(column);
+        gap: 10px;
+        width: 70%;
+
+        .title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--color-text);
+            padding: 0;
+        }
+
+        .category {
+            font-size: 0.5rem;
+            color: #9A9A9A;
+        }
+    }
+
+    .price-quantity {
+        @include displayFlex(column);
+        gap: 10px;
+
+        .price {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .quantity {
+            font-size: 0.5rem;
+            color: #9A9A9A;
+        }
+    }
+
+    .description {
+        font-size: 0.5rem;
+        color: var(--color-text);
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+}
+
+//// Responsive styles ////
+
+@media (max-width: 768px) {
+    img {
+        height: 35%;
+    }
+
+    .item-description {
+        // Hide scrollbar
+        
+        overflow-y: scroll;
+
+        /* Hide the scrollbar for Internet Explorer, Edge and Firefox */
+        -ms-overflow-style: none;
+        /* Internet Explorer and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+
+        /* Hide the scrollbar for Chrome, Safari and Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .top {
+            @include displayFlex(column);
+            gap: 20px;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+@import '../abstracts/mixins';
+@import '../base/colors';
+
+// No access page styles
+
+#main-container-no-access {
+    @include displayFlex(column);
+    @include flexProperties(center, center);
+    background-color: var(--color-background);
+    border-radius: 20px;
+    width: 80%;
+    padding: 19px 0;
+    overflow: hidden;
+
+    .no-access-image-text-container {
+        @include displayFlex(column);
+        @include flexProperties(center, center);
+        gap: 50px;
+
+        svg {
+            width: 150px;
+            height: 150px;
+            fill: #ED1C25;
+        }
+
+        span {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #ED1C25;
+        }
+
+        img {
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: var(--color-boxshadow);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #main-container-no-access {
+        width: 100%;
+
+        .no-access-image-text-container {
+            gap: 110px;
+
+            span {
+                font-size: 0.8rem;
+                width: 90%;
+            }
+
+            img{
+                height: 30vh;
+            }
+        }
+    }
+}

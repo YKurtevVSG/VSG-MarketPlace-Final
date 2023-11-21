@@ -1,0 +1,276 @@
+@import '../abstracts/mixins';
+@import '../base/colors';
+
+#main-container-lended-items {
+    .lended-item-accordion {
+        background-color: var(--color-backgroundMain);
+        border-radius: 10px;
+        padding: 1px 0;
+        margin: 0;
+        margin-bottom: 20px;
+        box-shadow: none;
+
+        p {
+            font-size: 0.6rem;
+            text-align: center;
+            color: var(--color-text);
+        }
+
+        svg {
+            fill: var(--color-text);
+        }
+
+        .avatar {
+            font-size: 0.7rem;
+        }
+
+        .MuiAccordionDetails-root {
+            padding: 0 12px 0px 12px;
+            margin-bottom: -8px
+        }
+
+        .MuiAccordionSummary-content {
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .main-row{
+            @include displayFlex();
+            @include flexProperties(space-between, center);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .avatar-name-container{
+            @include displayFlex();
+            @include flexProperties(center, center);
+            gap: 5px;
+        }
+
+        // .accordion-summary{
+        //     @include displayFlex();
+        //     @include flexProperties(space-between, space-between)
+        // }
+
+        .export-btn {
+            @include displayFlex();
+            @include flexProperties(center, center);
+            font-size: 0.5rem;
+            line-height: 24px;
+            padding: 5px 15px;
+            background-color: #3498DB;
+            border-radius: 4px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+            color: #FFFFFF;
+            width: 150px;
+
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .export-btn:hover {
+            cursor: pointer;
+            box-shadow: var(--color-boxshadow);
+            transition: 0.1s
+        }
+    }
+
+    .lended-item-accordion::before {
+        display: none;
+    }
+
+    .lended-item-accordion:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .table-header-lended-items,
+    .table-row-lended-items {
+        @include displayFlex();
+        @include flexProperties(space-between, center);
+        border-radius: 10px;
+        padding: 0 10px;
+        height: 50px;
+        margin-bottom: 20px;
+        font-size: 18px;
+
+        .col-1 {
+            flex-basis: 15%;
+        }
+
+        .col-2 {
+            flex-basis: 50%;
+        }
+
+        .col-3 {
+            flex-basis: 20%;
+        }
+
+        .col-4 {
+            flex-basis: 30%;
+        }
+
+        .col-5 {
+            flex-basis: 30%;
+        }
+
+        .col-6 {
+            flex-basis: 20%;
+
+            .status {
+                @include displayFlex();
+                @include flexProperties(space-between, center);
+                width: 100%;
+                position: relative;
+            }
+
+            .cancel-btn {
+                position: relative;
+                background: none;
+                width: 25px;
+                height: 25px;
+
+                svg {
+                    pointer-events: none;
+                    width: 25px;
+                    height: 25px;
+                    fill: #ED1C25;
+                }
+            }
+
+            .cancel-btn:hover {
+                cursor: pointer;
+
+                svg {
+                    transform: scale(1.3);
+                    transition: 0.1s;
+                }
+            }
+
+            .cancel-btn>svg {
+                pointer-events: none;
+            }
+
+            .loading-spinner {
+                color: #ED1C25;
+                width: 25px !important;
+                height: 25px !important;
+            }
+        }
+
+        .col {
+            color: var(--color-text);
+        }
+
+        .table-first-group {
+            @include displayFlex();
+            @include flexProperties(space-between, center);
+            width: 50%;
+        }
+
+        .table-second-group {
+            @include displayFlex();
+            @include flexProperties(space-between, center);
+            width: 50%;
+        }
+    }
+
+    .table-row-lended-items {
+        border: 2px solid var(--color-background);
+    }
+
+    .table-header-lended-items {
+        background-color: var(--color-background);
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 768px) {
+    // Table styles
+
+    #main-container-lended-items {
+        .table-header-lended-items {
+            display: none;
+        }
+
+        .table-row-lended-items {
+            @include displayFlex(column);
+            @include flexProperties(flex-start);
+            height: 250px;
+            padding: 0;
+
+            .col-1 {
+                flex-basis: 40%;
+            }
+
+            .col-2 {
+                flex-basis: 50%;
+            }
+
+            .col-3 {
+                flex-basis: 10%;
+            }
+
+            .table-first-group {
+                width: calc(100% - 20px);
+                justify-content: space-between;
+                border-bottom: 2px solid var(--color-background);
+                padding: 10px;
+
+                .col {
+                    @include displayFlex(column);
+                    @include flexProperties(center, flex-start);
+                    margin-left: 10px;
+                }
+
+                // Add table header before cell
+
+                .col::before {
+                    content: attr(data-before);
+                    font-weight: 700;
+                }
+            }
+
+            .table-second-group {
+                @include displayFlex(column);
+                @include flexProperties(space-evenly, flex-start);
+                box-sizing: border-box;
+                width: 100%;
+
+                .col {
+                    display: flex;
+                    align-items: center;
+                    width: calc(100% - 20px);
+                    gap: 10px;
+                    border-bottom: 2px solid var(--color-background);
+                    padding: 18px 10px;
+                }
+
+                .col:nth-child(3) {
+                    @include displayFlex();
+                    @include flexProperties(center, center);
+                    border: none;
+                }
+
+                // Add table header before cell
+
+                .col:nth-child(1)::before {
+                    content: attr(data-before);
+                    font-weight: 700;
+                }
+
+                .col:nth-child(2)::before {
+                    content: attr(data-before);
+                    font-weight: 700;
+                }
+
+                .col:nth-child(3)::before {
+                    content: attr(data-before);
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

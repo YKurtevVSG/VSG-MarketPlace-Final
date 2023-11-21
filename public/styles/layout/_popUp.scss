@@ -1,0 +1,38 @@
+// Pop up styles
+
+.pop-up {
+    @include displayFlex(column);
+    font-size: 0.5rem;
+    padding: 10px;
+    gap: 10px;
+    background-color: var(--color-background);
+    box-shadow: var(--color-boxshadow);
+
+    p {
+        display: inline;
+        text-align: left;
+        width: 100%;
+        line-height: 25px;
+        color: var(--color-text);
+    }
+
+    // Pop up buttons styles
+
+    .pop-up-buttons {
+        @include displayFlex();
+        @include flexProperties(flex-end);
+        gap: 20px;
+
+        .confirm-btn {
+            @include popUpButton(#ED1C25, #FFFFFF);
+        }
+
+        .cancel-btn {
+            @include popUpButton(#FFFFFF, #ED1C25);
+        }
+
+        .confirm-btn:hover, .cancel-btn:hover{
+            cursor: pointer;
+        }
+    }
+}

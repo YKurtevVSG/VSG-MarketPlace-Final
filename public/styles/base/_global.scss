@@ -1,0 +1,74 @@
+@import "../abstracts/mixins";
+@import "../base/colors";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+}
+
+// Body and main container styles
+
+body {
+    height: 100vh;
+    background-color: #F0F2F3;
+    overflow: hidden;
+}
+
+#main-container {
+    @include displayFlex();
+    height: calc(100% - 110px);
+    gap: 30px;
+    padding: 30px 20px;
+    background-color: var(--color-backgroundMain);
+}
+
+// No items in list styles
+
+.empty-list{
+    @include displayFlex(column);
+    @include flexProperties(center, center);
+    gap: 20px;
+    color: var(--color-text);
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+
+    span{
+        width: 360px;
+        font-size: 0.7rem;
+        text-align: center;
+    }
+
+    svg{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+// Responsive styles
+
+@media (max-width: 768px) {
+    #main-container {
+        padding: 15px;
+        height: calc(100% - 80px);
+    }
+
+    .empty-list{
+        top: 40%;
+
+        span{
+            width: 220px;
+        }
+    }
+}

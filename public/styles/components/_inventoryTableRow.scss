@@ -1,0 +1,111 @@
+// Invnetory table row styles
+
+.table {
+    tr {
+        height: 10%;
+        border-bottom: 1px solid #B3B3B3;
+    }
+
+    tr:last-of-type {
+        border-bottom: none;
+    }
+
+    td {
+        position: relative;
+        font-size: 0.5rem;
+        height: calc(100% / 10);
+        color: var(--color-text);
+        border-bottom: none;
+    }
+
+    th,
+    td {
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    // Table cells width styles
+
+    th:nth-child(1),
+    td:nth-child(1) {
+        width: 10%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+        width: 20%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+        width: 15%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+        width: 15%;
+    }
+
+    th:nth-child(5),
+    td:nth-child(5) {
+        width: 10%;
+    }
+
+    th:nth-child(6),
+    td:nth-child(6) {
+        width: 10%;
+    }
+
+    th:nth-child(7),
+    td:nth-child(7){
+        width: 5%
+    }
+
+    // Modify and delete item button styles
+
+    .table-actions {
+        @include displayFlex();
+        gap: 30px;
+
+        button {
+            @include displayFlex();
+            @include flexProperties(center, center);
+            width: 20px;
+            height: 20px;
+            background: none;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .delete-btn svg {
+            fill: #ED1C25;
+        }
+
+        .modify-btn svg {
+            fill: #ED6C02;
+        }
+
+        button:hover {
+            cursor: pointer;
+
+            svg {
+                transform: scale(1.3);
+                transition: 0.1s;
+            }
+        }
+
+        button>svg {
+            pointer-events: none
+        }
+
+        .loading-spinner {
+            color: #ED1C25;
+            width: 25px !important;
+            height: 25px !important;
+            margin-left: 25px;
+        }
+    }
+}

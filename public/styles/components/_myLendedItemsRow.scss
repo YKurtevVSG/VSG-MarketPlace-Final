@@ -1,0 +1,155 @@
+#main-container-my-lended-items {
+
+    .table-header-my-lended-items,
+    .table-row-my-lended-items {
+        @include displayFlex();
+        @include flexProperties(space-between, center);
+        border-radius: 10px;
+        padding: 0 10px;
+        height: 50px;
+        margin-bottom: 20px;
+        font-size: 18px;
+
+        .col-1 {
+            flex-basis: 15%;
+        }
+
+        .col-2 {
+            flex-basis: 50%;
+        }
+
+        .col-3 {
+            flex-basis: 20%;
+        }
+
+        .col-4 {
+            flex-basis: 30%;
+        }
+
+        .col-5 {
+            flex-basis: 30%;
+        }
+
+        .col-6 {
+            flex-basis: 20%;
+        }
+
+        .col {
+            color: var(--color-text);
+        }
+
+        .table-first-group {
+            @include displayFlex();
+            @include flexProperties(space-between, center);
+            width: 50%;
+        }
+
+        .table-second-group {
+            @include displayFlex();
+            @include flexProperties(space-between, center);
+            width: 50%;
+        }
+    }
+
+    .table-row-my-lended-items {
+        border: 2px solid #DADCDD;
+    }
+
+    .table-row-my-lended-items:last-of-type{
+        margin-bottom: 0;
+    }
+
+    .table-header-my-lended-items {
+        background-color: var(--color-backgroundMain);
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 768px) {
+    // Table styles
+
+    #main-container-my-lended-items {
+        .table-header-my-lended-items {
+            display: none;
+        }
+
+        .table-row-my-lended-items {
+            @include displayFlex(column);
+            @include flexProperties(flex-start);
+            height: 250px;
+            padding: 0;
+
+            .col-1 {
+                flex-basis: 40%;
+            }
+
+            .col-2 {
+                flex-basis: 50%;
+            }
+
+            .col-3 {
+                flex-basis: 10%;
+            }
+
+            .table-first-group {
+                width: calc(100% - 20px);
+                justify-content: space-between;
+                border-bottom: 2px solid #FFFFFF;
+                padding: 10px;
+
+                .col {
+                    @include displayFlex(column);
+                    @include flexProperties(center, flex-start);
+                    margin-left: 10px;
+                }
+
+                // Add table header before cell
+
+                .col::before {
+                    content: attr(data-before);
+                    font-weight: 700;
+                }
+            }
+
+            .table-second-group {
+                @include displayFlex(column);
+                @include flexProperties(space-evenly, flex-start);
+                box-sizing: border-box;
+                width: 100%;
+
+                .col {
+                    display: flex;
+                    align-items: center;
+                    width: calc(100% - 20px);
+                    gap: 10px;
+                    border-bottom: 2px solid #FFFFFF;
+                    padding: 18px 10px;
+                }
+
+                .col:nth-child(3) {
+                    @include displayFlex();
+                    @include flexProperties(flex-start, center);
+                    margin-top: 3px;
+                    border: none;
+                }
+
+                // Add table header before cell
+
+                .col:nth-child(1)::before {
+                    content: attr(data-before);
+                    font-weight: 700;
+                }
+
+                .col:nth-child(2)::before {
+                    content: attr(data-before);
+                    font-weight: 700;
+                }
+
+                .col:nth-child(3)::before{
+                    content: attr(data-before);
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

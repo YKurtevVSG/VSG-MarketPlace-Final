@@ -1,0 +1,28 @@
+@import '../base/colors';
+
+// CSS display flex settings
+
+@mixin displayFlex($flexDirection: row) {
+    display: flex;
+    flex-direction: $flexDirection;
+}
+
+@mixin flexProperties($justifyContent: flex-start, $alignItems: flex-start) {
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+
+// Pop-up button styles
+
+@mixin popUpButton($backgroundColor, $textColor) {
+    @include displayFlex();
+    @include flexProperties(center, center);
+    width: 57px;
+    height: 22px;
+    box-shadow: var(--color-boxshadow);
+    border-radius: 4px;
+    background-color: $backgroundColor;
+    text-decoration: none;
+    font-size: 14px;
+    color: $textColor;
+}

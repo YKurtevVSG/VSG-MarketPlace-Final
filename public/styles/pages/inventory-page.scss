@@ -1,0 +1,424 @@
+@import '../abstracts/mixins';
+@import '../base/colors';
+
+@import '../components/addAndModifyModal';
+@import '../components/inventoryTableRow';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+// Inventory page styles
+
+#main-container-inventory {
+    background-color: var(--color-background);
+    width: 80%;
+    border-radius: 20px;
+    padding: 40px 20px;
+    position: relative;
+
+    #inventory-wrapper {
+        height: 100%;
+        position: relative;
+
+        // Location, search and add item styles
+
+        .search-add-container {
+            @include displayFlex();
+            @include flexProperties(flex-end, flex-end);
+            gap: 15px;
+
+            // Search styles
+
+            .search {
+                @include displayFlex();
+                @include flexProperties(center, center);
+                gap: 10px;
+                width: 200px;
+
+                svg {
+                    height: 25px;
+                    width: 25px;
+                    margin: 0 5px 0 0;
+                    fill: var(--color-text);
+                }
+            }
+
+            #search-form {
+                display: flex;
+                height: 20px;
+
+                label {
+                    font-size: 0.5rem;
+                    color: var(--color-text);
+                }
+
+                input {
+                    font-size: 0.5rem;
+                    width: 100%;
+                    color: var(--color-text);
+                }
+            }
+
+            // Export button styles
+            .export-btn {
+                @include displayFlex();
+                @include flexProperties(center, center);
+                font-size: 0.5rem;
+                line-height: 24px;
+                padding: 5px 15px;
+                background-color: #3498DB;
+                border-radius: 4px;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+                color: #FFFFFF;
+                width: 150px;
+
+                svg {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+
+            // Add item button styles
+
+            .add-btn {
+                @include displayFlex();
+                @include flexProperties(center, center);
+                font-size: 0.5rem;
+                line-height: 24px;
+                padding: 5px 15px;
+                background-color: #2E7D32;
+                border-radius: 4px;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+                color: #FFFFFF;
+                width: 150px;
+
+                svg {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+
+            .add-btn:hover, .export-btn:hover {
+                cursor: pointer;
+                box-shadow: var(--color-boxshadow);
+                transition: 0.1s
+            }
+
+            .input-field {
+                .MuiInputBase-root::before {
+                    border-bottom: 2px solid #9A9A9A;
+                }
+
+                .MuiInputBase-root::after {
+                    border-bottom: 2px solid #9A9A9A;
+                }
+
+                .MuiFormHelperText-root {
+                    font-size: 0.4rem;
+                    color: #ED1C25;
+                }
+
+                & .MuiInput-underline:hover::before {
+                    border-bottom: 2px solid #ED1C25 !important;
+                }
+            }
+        }
+
+        .data-table {}
+
+        .loading-container {
+            @include displayFlex(column-reverse);
+            @include flexProperties(center, center);
+            gap: 20px;
+            margin-top: 27vh;
+
+            span {
+                font-size: 0.8rem;
+                font-style: italic;
+                color: var(--color-text);
+            }
+
+            .loading-line {
+                width: 20%;
+            }
+        }
+    }
+}
+
+// // Items table styles
+
+// .table-wrapper {
+//     @include displayFlex(column);
+//     @include flexProperties(space-between);
+//     margin-top: 29px;
+//     border: 1px solid #B3B3B3;
+//     border-top-left-radius: 4px;
+//     border-top-right-radius: 4px;
+//     height: calc(100vh - 318px);
+//     background-color: var(--color-background);
+//     overflow: hidden;
+// }
+
+// .table {
+//     thead {
+//         th {
+//             font-size: 0.6rem;
+//             font-weight: 700;
+//         }
+//     }
+
+//     th {
+//         font-size: 0.5rem;
+//         border-bottom: 1px solid #B3B3B3;
+//         color: var(--color-text);
+//         padding: 10px 16px;
+//     }
+// }
+
+.data-table {
+    margin: 20px 0 0 0;
+    height: 93% !important;
+
+    .data-grid-header {
+        font-size: 0.6rem;
+        font-weight: 700;
+        color: var(--color-text);
+    }
+
+    .MuiSvgIcon-root {
+        width: 20px;
+        height: 20px;
+        fill: var(--color-text);
+    }
+
+    .MuiDataGrid-columnSeparator {
+        svg {
+            display: none;
+        }
+    }
+
+    .MuiDataGrid-cellContent {
+        font-size: 0.5rem;
+        color: var(--color-text);
+    }
+
+    .MuiToolbar-root {
+        font-size: 0.6rem;
+        color: var(--color-text);
+
+        p {
+            font-size: 0.6rem;
+            color: var(--color-text);
+        }
+    }
+
+    .MuiDataGrid-overlay {
+        background-color: var(--color-background);
+        color: var(--color-text);
+    }
+
+    .MuiDataGrid-overlayWrapperInner {
+        .empty-list {
+            margin: 23vh 0 0 38vw;
+
+            svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+
+    .table-actions {
+        @include displayFlex();
+        gap: 15px;
+
+        button {
+            @include displayFlex();
+            @include flexProperties(center, center);
+            width: 20px;
+            height: 20px;
+            background: none;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .delete-btn svg {
+            fill: #ED1C25;
+        }
+
+        .lend-btn svg {
+            fill: #139EFF;
+        }
+
+        .modify-btn svg {
+            fill: #ED6C02;
+        }
+
+        button:hover {
+            cursor: pointer;
+
+            svg {
+                transform: scale(1.3);
+                transition: 0.1s;
+            }
+        }
+
+        button>svg {
+            pointer-events: none
+        }
+
+        .loading-spinner {
+            color: #ED1C25;
+            width: 25px !important;
+            height: 25px !important;
+            margin-left: 25px;
+        }
+    }
+}
+
+.MuiDataGrid-menu {
+    .MuiPaper-root {
+        background-color: var(--color-background);
+
+        .MuiList-root {
+            width: 100px !important;
+        }
+
+        svg {
+            fill: var(--color-text);
+            width: 20px;
+            height: 20px;
+        }
+
+        span {
+            font-size: 0.5rem;
+            color: var(--color-text);
+            width: 100%;
+        }
+    }
+}
+
+.MuiDataGrid-panel {
+    .MuiPaper-root {
+        background-color: var(--color-background);
+
+        label {
+            font-size: 0.5rem;
+            color: var(--color-text);
+        }
+
+        select,
+        input {
+            font-size: 0.5rem;
+            color: var(--color-text);
+        }
+
+        option {
+            color: #000000;
+        }
+
+        select {
+            padding-bottom: 12px;
+            margin-top: -10px;
+        }
+
+        input {
+            padding: 6px 0 0 0;
+        }
+
+        svg {
+            width: 25px;
+            height: 25px;
+            fill: var(--color-text);
+        }
+
+        .MuiInputBase-root {
+            svg {
+                width: 45px;
+                height: 45px;
+            }
+
+            svg:last-of-type {
+                display: none;
+            }
+        }
+    }
+
+    .MuiFormControl-root {
+        .MuiInputBase-root::before {
+            border-bottom: 2px solid #9A9A9A;
+        }
+
+        .MuiInputBase-root::after {
+            border-bottom: 2px solid #9A9A9A;
+        }
+
+        .MuiFormHelperText-root {
+            font-size: 0.4rem;
+            color: #ED1C25;
+        }
+
+        & .MuiInput-underline:hover::before {
+            border-bottom: 2px solid #ED1C25 !important;
+        }
+    }
+}
+
+
+
+// Pagiantion styles
+
+// #pagination {
+//     @include displayFlex();
+//     @include flexProperties(flex-end, center);
+//     border-bottom: 1px solid #B3B3B3;
+//     border-left: 1px solid #B3B3B3;
+//     border-right: 1px solid #B3B3B3;
+//     border-bottom-left-radius: 4px;
+//     border-bottom-right-radius: 4px;
+//     height: 63.45px;
+//     width: 100%;
+//     overflow: hidden;
+// }
+
+// Responsive styles
+
+@media (max-width: 768px) {
+    #main-container-inventory {
+        padding: 20px 0 20px 0;
+        width: 100%;
+
+        #inventory-wrapper {
+            padding: 0px 19px 0px 19px;
+
+            .search-add-container {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .loading-container {
+                .loading-line {
+                    width: 80%;
+                }
+            }
+        }
+    }
+
+    .data-table {
+        .MuiDataGrid-overlayWrapperInner {
+            .empty-list {
+                margin: 23vh 0 0 42vw;
+            }
+        }
+    }
+
+    .table-wrapper {
+        height: calc(100% - 180px);
+    }
+
+    table {
+        overflow-x: scroll;
+    }
+}

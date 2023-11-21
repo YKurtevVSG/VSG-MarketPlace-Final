@@ -1,0 +1,29 @@
+$lightThemeText: #000000;
+$darkThemeText: #FFFFFF;
+
+$lightThemeBackground: #FFFFFF;
+$darkThemeBackground: #353535;
+
+$lightThemeBoxShadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+$darkThemeBoxShadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+
+$lightThemeMainBackground: #F0F2F3;
+$darkThemeMainBackground: #6B6B6B;
+
+// Light theme colors
+
+html[data-theme="light"]{
+    --color-text: #{$lightThemeText};
+    --color-background: #{$lightThemeBackground};
+    --color-boxshadow: #{$lightThemeBoxShadow};
+    --color-backgroundMain: #{$lightThemeMainBackground};
+}
+
+// Dark theme colors
+
+html[data-theme="dark"]{
+    --color-text: #{$darkThemeText};
+    --color-background: #{$darkThemeBackground};
+    --color-boxshadow: #{$darkThemeBoxShadow};
+    --color-backgroundMain: #{$darkThemeMainBackground};
+}
