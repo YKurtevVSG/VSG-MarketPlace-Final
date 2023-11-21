@@ -1,9 +1,9 @@
 import { baseUrl } from "../utils/baseApi";
 
-const user = sessionStorage.getItem('user');
-const token = user && JSON.parse(user).token;
-
 export const exportInventory = () => {
+    const user = sessionStorage.getItem('user');
+    const token = user && JSON.parse(user).token;
+
     fetch(`${baseUrl}/Export`, {
         method: 'GET',
         headers: {
@@ -32,6 +32,9 @@ export const exportInventory = () => {
 }
 
 export const exportLentItemsProtocol = (params) => {
+    const user = sessionStorage.getItem('user');
+    const token = user && JSON.parse(user).token;
+
     fetch(`${baseUrl}/Export/LentItemsProtocol`, {
         method: 'POST',
         headers: {
