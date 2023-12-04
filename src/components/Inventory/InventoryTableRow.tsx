@@ -15,9 +15,10 @@ import LendItemModal from "./LendItemModal";
 type ProductProps = {
     props: IInventoryProduct,
     setInventoryProducts: Dispatch<SetStateAction<IInventoryProduct[]>>
+    inventoryProducts: IInventoryProduct[]
 }
 
-const InventoryTableRow = ({ props, setInventoryProducts }: ProductProps) => {
+const InventoryTableRow = ({ props, setInventoryProducts, inventoryProducts }: ProductProps) => {
     // Modify modal state
     const [openModifyModal, setOpenModifyModal] = useState<boolean>(false);
     // Lend modal state
@@ -67,7 +68,8 @@ const InventoryTableRow = ({ props, setInventoryProducts }: ProductProps) => {
                     modal: {
                         open: openModifyModal,
                         handleClose: handleModifyModal,
-                        setInventoryProducts: setInventoryProducts
+                        setInventoryProducts: setInventoryProducts,
+                        inventoryProducts: inventoryProducts
                     },
                     product: {
                         ...props
@@ -83,7 +85,8 @@ const InventoryTableRow = ({ props, setInventoryProducts }: ProductProps) => {
                     id: props.id,
                     name: props.name,
                     lendQty: props.lendQty,
-                    image: props.image
+                    image: props.image,
+                    inventoryProducts: inventoryProducts
                 }}
             />
             {/* Table row */}

@@ -24,6 +24,12 @@
             font-size: 0.7rem;
         }
 
+        .MuiAccordionSummary-root:hover {
+            svg {
+                fill: #ED1C25;
+            }
+        }
+
         .MuiAccordionDetails-root {
             padding: 0 12px 0px 12px;
             margin-bottom: -8px
@@ -35,14 +41,14 @@
             gap: 10px;
         }
 
-        .main-row{
+        .main-row {
             @include displayFlex();
             @include flexProperties(space-between, center);
             gap: 10px;
             width: 100%;
         }
 
-        .avatar-name-container{
+        .avatar-name-container {
             @include displayFlex();
             @include flexProperties(center, center);
             gap: 5px;
@@ -64,10 +70,12 @@
             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
             color: #FFFFFF;
             width: 150px;
+            margin: 0px 0 15px 15px;
 
             svg {
                 width: 25px;
                 height: 25px;
+                fill: #FFFFFF;
             }
         }
 
@@ -75,6 +83,10 @@
             cursor: pointer;
             box-shadow: var(--color-boxshadow);
             transition: 0.1s
+        }
+
+        .disabled-export-btn:hover {
+            cursor: not-allowed;
         }
     }
 

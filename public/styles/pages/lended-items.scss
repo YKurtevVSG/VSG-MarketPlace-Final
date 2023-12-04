@@ -31,11 +31,11 @@
             display: none;
         }
 
-        .MuiPaper-root:hover{
-            svg{
-                fill: #ED1C25;
-            }
-        }
+        // .MuiPaper-root:hover{
+        //     svg{
+        //         fill: #ED1C25;
+        //     }
+        // }
 
         .loading-container {
             @include displayFlex(column-reverse);

@@ -64,8 +64,6 @@ h1 {
         z-index: 1;
     }
 
-    
-
     // Input field styles
     .input-container {
         @include displayFlex(column);
@@ -76,6 +74,36 @@ h1 {
             height: 20px;
             font-size: 0.5rem;
             color: var(--color-text);
+        }
+
+        .MuiTextField-root {
+            width: 100%;
+            margin-right: 5px;
+        }
+
+        .category-wrapper {
+            @include displayFlex;
+            @include flexProperties(flex-start, center);
+
+            .category-add-button {
+                width: 30px;
+                height: 30px;
+                color: #2E7D32;
+                cursor: pointer;
+            }
+
+            .category-edit-button {
+                width: 25px;
+                height: 25px;
+                color: #ED6C02;
+                cursor: pointer;
+            }
+
+            .MuiButtonBase-root {
+                padding: 0;
+                width: 30px;
+                height: 30px;
+            }
         }
 
         .MuiAutocomplete-root {
@@ -312,7 +340,7 @@ input[type=number] {
     font-size: 0.5rem;
     overflow: scroll;
 
-    .MuiAutocomplete-listbox{
+    .MuiAutocomplete-listbox {
         font-size: 0.5rem;
         background-color: var(--color-background);
         color: var(--color-text);

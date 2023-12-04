@@ -13,12 +13,12 @@ const Modal = ({ props, children }: ModalWrapperProps) => {
             className='modal'
             open={props.open}
             onClose={() => props.handleClose()}
-            TransitionComponent={Zoom}
-            transitionDuration={300}
+            // TransitionComponent={Zoom}
+            // transitionDuration={300}
             sx={{
                 '.MuiPaper-root': {
-                    height: props.modalType === 'lend' ? '500px' : '785px',
-                    width: props.modalType === 'lend' ? '350px' : '550px',
+                    height: props.modalType === 'lend' ? '500px' : props.modalType === 'category' ? '180px' : '785px',
+                    width: props.modalType === 'lend' ? '350px' : props.modalType === 'category' ? '300px' : '550px',
                     padding: props.modalType === 'description' ? '0' : '55px 40px 45px 40px',
                     fontFamily: props.modalType === 'description' ? "'Roboto', sans-serif" : "'Inter', sans-serif",
                 },

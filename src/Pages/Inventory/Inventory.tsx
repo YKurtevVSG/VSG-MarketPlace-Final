@@ -55,21 +55,21 @@ const Inventory = () => {
     }));
 
     const columns: GridColDef[] = [
-        { field: 'code', headerName: 'Code', headerClassName: 'data-grid-header', width: 150 },
-        { field: 'name', headerName: 'Name', headerClassName: 'data-grid-header', width: 300 },
-        { field: 'categoryName', headerName: 'Category', headerClassName: 'data-grid-header', width: 200 },
-        { field: 'locationName', headerName: 'Location', headerClassName: 'data-grid-header', width: 200 },
-        { field: 'quantityForSale', headerName: 'For Sale', headerClassName: 'data-grid-header', width: 150 },
-        { field: 'quantityForRent', headerName: 'For Lend', headerClassName: 'data-grid-header', width: 150 },
-        { field: 'quantity', headerName: 'QTY', headerClassName: 'data-grid-header', width: 150 },
+        { field: 'code', headerName: 'Code', headerClassName: 'data-grid-header', flex: 0.5 },
+        { field: 'name', headerName: 'Name', headerClassName: 'data-grid-header', flex: 1.5 },
+        { field: 'categoryName', headerName: 'Category', headerClassName: 'data-grid-header', flex: 1 },
+        { field: 'locationName', headerName: 'Location', headerClassName: 'data-grid-header', flex: 1 },
+        { field: 'quantityForSale', headerName: 'For Sale', headerClassName: 'data-grid-header', flex: 0.6 },
+        { field: 'quantityForRent', headerName: 'For Lend', headerClassName: 'data-grid-header', flex: 0.6 },
+        { field: 'quantity', headerName: 'QTY', headerClassName: 'data-grid-header', flex: 0.6 },
         {
             field: 'actions',
             headerName: 'Actions',
             headerClassName: 'data-grid-header',
-            width: 100,
+            width: 120,
             renderCell(params) {
                 const item = params.value as IInventoryProduct;
-                return <InventoryTableRow props={item} setInventoryProducts={setInventoryProductsState} />
+                return <InventoryTableRow props={item} setInventoryProducts={setInventoryProductsState} inventoryProducts={inventoryProductsState} />
             },
         }
     ]
@@ -80,14 +80,14 @@ const Inventory = () => {
         )
     }
 
-    const onExport = () => {
-        exportInventory();
+    const onExport = (e) => {
+        exportInventory(e);
     }
 
     return (
         <>
             {/* Add item modal */}
-            <AddItemModal props={{ open: openAddModal, handleClose: handleAddModal, setInventoryProducts: setInventoryProductsState }} />
+            <AddItemModal props={{ open: openAddModal, handleClose: handleAddModal, setInventoryProducts: setInventoryProductsState, inventoryProducts: inventoryProductsState }} />
             {/* Inventory */}
             <main id="main-container-inventory">
                 <div id="inventory-wrapper">
@@ -112,7 +112,7 @@ const Inventory = () => {
                         <Button className='add-btn' buttonText='Add Item' buttonType='button' onClick={() => handleAddModal()}>
                             <AddIcon />
                         </Button>
-                        <Button className='export-btn' buttonText='Export' buttonType='button' onClick={onExport}>
+                        <Button className='export-btn' buttonText='Export' buttonType='button' onClick={(e) => onExport(e)}>
                             <FileDownloadIcon />
                         </Button>
                     </div>

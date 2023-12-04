@@ -3,6 +3,7 @@
 
 @import '../components/addAndModifyModal';
 @import '../components/inventoryTableRow';
+@import '../components/addEditCategoryModal';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
@@ -97,10 +98,15 @@
                 }
             }
 
-            .add-btn:hover, .export-btn:hover {
+            .add-btn:hover,
+            .export-btn:hover {
                 cursor: pointer;
                 box-shadow: var(--color-boxshadow);
                 transition: 0.1s
+            }
+
+            .disabled-export-btn:hover {
+                cursor: not-allowed;
             }
 
             .input-field {

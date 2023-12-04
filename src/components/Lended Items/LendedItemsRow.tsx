@@ -18,8 +18,8 @@ const LendedItemsRow = ({ props }: LendedItemProps) => {
 
     const { data: users } = useGetUsersQuery();
 
-    const onExport = (params: any) => {
-        exportLentItemsProtocol(params);
+    const onExport = (e, params: any) => {
+        exportLentItemsProtocol(e, params);
     }
 
     const username = users?.find((x: IUser) => x.email.toLowerCase() === props.email.toLowerCase())?.name;
@@ -36,17 +36,15 @@ const LendedItemsRow = ({ props }: LendedItemProps) => {
                     expandIcon={<ExpandMoreIcon />}
                 >
                     <div className="main-row">
-                        <div className="avatar-name-container" style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
+                        <div className="avatar-name-container" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                             <Avatar className="avatar" src={userPhoto} />
                             <Typography>{username}</Typography>
                         </div>
-                        <Button className='export-btn' buttonText='Export' buttonType='button' onClick={() => onExport({ email: email, recepient: username, provider: loggedUserName })}>
-                            <FileDownloadIcon />
-                        </Button>
                     </div>
-
                 </AccordionSummary>
-
+                <Button className='export-btn' buttonText='Export' buttonType='button' onClick={(e) => onExport(e, { email: email, recepient: username, provider: loggedUserName })}>
+                    <FileDownloadIcon />
+                </Button>
                 <AccordionDetails>
                     <div className="table-header-lended-items">
                         <div className="table-first-group">

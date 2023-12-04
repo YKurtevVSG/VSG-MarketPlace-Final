@@ -81,6 +81,17 @@ export interface IAddModal {
     name?: string
     lendQty?: number
     image?: string
+    inventoryProducts: IInventoryProduct[]
+}
+
+export interface IAddEditCategoryModal {
+    open: boolean
+    handleCLose: () => void
+    categoryId: number | null
+    categoryName: string | undefined
+    setValue: any
+    setInventoryProducts: any
+    inventoryProducts: IInventoryProduct[]
 }
 
 export interface IButton {
@@ -127,8 +138,8 @@ export interface IFormInputs {
     code: string
     name: string
     description: string
-    categoryId: number | ''
-    locationId: number | ''
+    categoryId: number | null
+    locationId: number | null
     saleQty: number
     lendQty: number
     price: number
@@ -139,6 +150,10 @@ export interface IFormInputs {
 export interface ILendFormInputs {
     email: null | { label: string, value: string }
     quantity: number
+}
+
+export interface ICategoryFormInputs {
+    name: string | undefined
 }
 
 export interface ILendedItem {
